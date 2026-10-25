@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>Boyong Resto — Resto Apung Legendaris</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        forest: {
+                            950: '#071611',
+                            900: '#0c221b',
+                            850: '#112f25',
+                            800: '#173c30',
+                            700: '#1f4d3e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Reset & Mobile Ergonomics */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: #071611;
+            overscroll-behavior-y: none;
+        }
+
+        /* Soft Deep Forest Green Ambient Orbs */
+        .ambient-orb {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 9999px;
+            filter: blur(72px);
+            z-index: 0;
+            will-change: transform;
+        }
+        .orb-top {
+            width: 340px;
+            height: 340px;
+            top: -80px;
+            left: -90px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.20) 0%, rgba(12, 34, 27, 0) 70%);
+        }
+        .orb-bottom {
+            width: 380px;
+            height: 380px;
+            bottom: 4%;
+            right: -110px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.14) 0%, rgba(12, 34, 27, 0) 70%);
+        }
+
+        /* Lightweight Liquid Glassmorphism Surfaces */
+        .liquid-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.03) 100%), rgba(12, 34, 27, 0.76);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 16px 38px -10px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        .liquid-glass-card {
+            background: linear-gradient(155deg, rgba(23, 60, 48, 0.52) 0%, rgba(12, 34, 27, 0.84) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .liquid-glass-pill {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.03) 100%), rgba(17, 47, 37, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.20), 0 6px 16px rgba(0, 0, 0, 0.28);
+        }
+
+        /* iOS & Android Safe Area Support */
+        .safe-top {
+            padding-top: max(0.85rem, env(safe-area-inset-top));
+        }
+        .safe-bottom {
+            padding-bottom: max(1rem, env(safe-area-inset-bottom));
+        }
+
+        /* Smooth View Animations */
+        .fade-enter {
+            animation: fadeSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeSlideUp {
+            0% { opacity: 0; transform: translateY(10px) scale(0.99); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Clean Non-Intrusive Scrollbars */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(52, 211, 153, 0.25);
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-forest-950 text-emerald-50 min-h-full font-sans antialiased overflow-x-hidden flex flex-col justify-between selection:bg-emerald-400 selection:text-forest-950">
+
+    <!-- Soft Ambient Glow Background -->
+    <div class="ambient-orb orb-top"></div>
+    <div class="ambient-orb orb-bottom"></div>
+
+    <!-- =================================================================== -->
+    <!-- 1. INITIAL LANGUAGE SPLASH SCREEN                                   -->
+    <!-- =================================================================== -->
+    <div id="welcomeSplash" class="fixed inset-0 z-50 flex items-center justify-center p-5 bg-forest-950/90 backdrop-blur-2xl transition-opacity duration-300">
+        <div class="liquid-glass rounded-[32px] p-6 sm:p-8 max-w-sm w-full text-center relative overflow-hidden">
+            <!-- Subtle Specular Highlight -->
+            <div class="absolute -top-12 -right-12 w-36 h-36 bg-emerald-400/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-teal-400/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            <!-- Brand Emblem -->
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl liquid-glass-pill flex items-center justify-center text-emerald-300">
+                <i data-lucide="waves" class="w-8 h-8"></i>
+            </div>
+
+            <h1 class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-white mb-1">
+                Boyong Resto
+            </h1>
+            <p class="text-[11px] uppercase tracking-[0.2em] text-emerald-300/90 font-semibold mb-6">
+                Resto Apung Legendaris
+            </p>
+
+            <div class="space-y-1 mb-6">
+                <p class="text-sm font-semibold text-white">Selamat Datang / Welcome</p>
+                <p class="text-xs text-emerald-200/75">Pilih bahasa untuk membuka daftar menu:</p>
+            </div>
+
+            <!-- Language Buttons -->
+            <div class="space-y-3">
+                <button type="button" onclick="handleInitialLanguage('id')" class="w-full py-3.5 px-4 rounded-2xl liquid-glass-pill hover:bg-forest-800/70 active:scale-[0.98] transition-all text-white flex items-center justify-between group">
+                    <div class="flex items-center gap-3.5">
+                        <span class="text-2xl leading-none" aria-hidden="true">🇮🇩</span>
+                        <div class="text-left">
+                            <span class="block text-sm font-bold tracking-wide">Bahasa Indonesia</span>
+                            <span class="block text-[11px] text-emerald-300/80">Buka Daftar Menu & Harga</span>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+
+                <button type="button" onclick="handleInitialLanguage('en')" class="w-full py-3.5 px-4 rounded-2xl liquid-glass-pill hover:bg-forest-800/70 active:scale-[0.98] transition-all text-white flex items-center justify-between group">
+                    <div class="flex items-center gap-3.5">
+                        <span class="text-2xl leading-none" aria-hidden="true">🇬🇧</span>
+                        <div class="text-left">
+                            <span class="block text-sm font-bold tracking-wide">English</span>
+                            <span class="block text-[11px] text-emerald-300/80">Explore Our Menu & Prices</span>
+                        </div>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+            <p class="mt-6 text-[10px] tracking-wider uppercase text-emerald-300/50 font-medium">
+                Buku Menu Digital Resmi
+            </p>
+        </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- 2. STICKY LIQUID GLASS TOP HEADER                                   -->
+    <!-- =================================================================== -->
+    <header class="sticky top-0 z-40 safe-top px-4 pb-3 liquid-glass border-b border-white/10">
+        <div class="max-w-lg mx-auto flex items-center justify-between gap-2">
+            <!-- Brand Title & Localized Tagline -->
+            <div class="flex items-center gap-2.5 min-w-0">
+                <div class="w-10 h-10 shrink-0 rounded-xl liquid-glass-pill flex items-center justify-center text-emerald-300">
+                    <i data-lucide="waves" class="w-5 h-5"></i>
+                </div>
+                <div class="min-w-0">
+                    <h2 class="font-serif text-lg font-bold text-white tracking-wide flex items-center gap-1.5 leading-tight truncate">
+                        <span>Boyong Resto</span>
+                        <span class="inline-block w-1.5 h-1.5 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+                    </h2>
+                    <p id="headerTagline" class="text-[11px] text-emerald-300/85 font-medium truncate">
+                        Resto Apung Legendaris
+                    </p>
+                </div>
+            </div>
+
+            <!-- Persistent Language Toggle Pill (ID | EN) -->
+            <div class="flex items-center shrink-0 liquid-glass-pill rounded-full p-1 gap-0.5" role="group" aria-label="Language Switcher">
+                <button type="button" id="langToggleId" onclick="setLanguage('id')" class="px-3 py-1.5 text-xs font-bold rounded-full transition-all duration-200 bg-emerald-400 text-forest-950 shadow-sm">
+                    ID
+                </button>
+                <button type="button" id="langToggleEn" onclick="setLanguage('en')" class="px-3 py-1.5 text-xs font-bold rounded-full transition-all duration-200 text-emerald-100/80 hover:text-white">
+                    EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- 3. MAIN CATEGORY GALLERY GRID                                       -->
+    <!-- =================================================================== -->
+    <main class="relative z-10 flex-grow max-w-lg w-full mx-auto px-4 py-4">
+        <section id="gallerySection" class="fade-enter">
+            <!-- Intro Banner -->
+            <div class="liquid-glass-card rounded-[26px] p-4 sm:p-5 mb-4 relative overflow-hidden">
+                <div class="absolute -right-8 -bottom-8 w-28 h-28 bg-emerald-400/15 rounded-full blur-xl pointer-events-none"></div>
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span id="heroBadge" class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/30">
+                        Buku Menu Digital
+                    </span>
+                    <span id="zoomBadge" class="text-[10px] text-amber-300 font-semibold flex items-center gap-1">
+                        <i data-lucide="zoom-in" class="w-3 h-3"></i>
+                        <span>Perbesar tampilan menu</span>
+                    </span>
+                </div>
+                <h3 id="heroTitle" class="font-serif text-xl font-bold text-white mb-1">
+                    Pilih Kategori Hidangan
+                </h3>
+                <p id="heroDesc" class="text-xs text-emerald-100/75 leading-relaxed">
+                    Silakan pilih kategori di bawah ini untuk melihat daftar hidangan beserta informasi harga selengkapnya.
+                </p>
+            </div>
+
+            <!-- 2-Column Mobile-Friendly Category Cards Grid -->
+            <div id="categoryGrid" class="grid grid-cols-2 gap-3.5 pb-6">
+                <!-- Rendered dynamically from menuCatalogData -->
+            </div>
+        </section>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 4. FULLSCREEN INTERACTIVE MENU LIGHTBOX WITH ZOOM & PAN             -->
+    <!-- =================================================================== -->
+    <div id="menuViewerModal" class="fixed inset-0 z-50 hidden bg-forest-950/95 backdrop-blur-2xl flex flex-col justify-between select-none overflow-hidden" role="dialog" aria-modal="true">
+
+        <!-- Top Floating Liquid Glass Toolbar -->
+        <div class="relative z-30 safe-top px-3.5 pt-2.5 pb-2.5 flex items-center justify-between gap-2 bg-gradient-to-b from-forest-950/90 via-forest-950/50 to-transparent">
+            <!-- Thumb-Friendly Back Button -->
+            <button type="button" onclick="closeMenuViewer()" class="liquid-glass-pill text-white px-3.5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-1.5 active:scale-95 transition-all hover:bg-forest-800/80 shrink-0">
+                <i data-lucide="arrow-left" class="w-4 h-4 text-emerald-300"></i>
+                <span id="viewerBackLabel">Kembali</span>
+            </button>
+
+            <!-- Active Category Title & Conditional Page Counter -->
+            <div class="text-center min-w-0 px-1">
+                <h4 id="viewerCategoryTitle" class="font-serif text-sm sm:text-base font-bold text-white truncate">
+                    Aneka Ikan
+                </h4>
+                <div id="pageIndicatorBadge" class="hidden text-[10px] text-emerald-300 font-semibold mt-0.5">
+                    Halaman 1 dari 2
+                </div>
+            </div>
+
+            <!-- Floating Zoom Toolbar (- | 100% | +) -->
+            <div class="flex items-center liquid-glass-pill rounded-2xl p-1 gap-0.5 shrink-0">
+                <button type="button" onclick="zoomStep(-0.4)" class="p-2 text-white active:scale-90 rounded-xl hover:bg-white/10 transition-all" aria-label="Zoom Out">
+                    <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                </button>
+                <button type="button" onclick="resetZoom()" class="px-1.5 py-1 text-[11px] font-bold text-emerald-300 active:scale-95 min-w-[42px] text-center" aria-label="Reset Zoom">
+                    <span id="zoomPercent">100%</span>
+                </button>
+                <button type="button" onclick="zoomStep(0.4)" class="p-2 text-white active:scale-90 rounded-xl hover:bg-white/10 transition-all" aria-label="Zoom In">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Interactive Touch/Mouse Zoom & Pan Viewport -->
+        <div id="viewerViewport" class="relative flex-grow flex items-center justify-center overflow-hidden touch-none cursor-grab active:cursor-grabbing">
+            <div id="zoomTarget" class="w-full h-full flex items-center justify-center will-change-transform transition-transform duration-100 ease-out">
+                <img id="menuPageImage"
+                     src=""
+                     alt="Menu Boyong Resto"
+                     draggable="false"
+                     class="max-w-[94vw] max-h-[76vh] object-contain rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.65)] border border-white/10 pointer-events-none select-none"
+                     onerror="this.src='https://placehold.co/900x1280/0c221b/34d399?text=Menu+Boyong+Resto'">
+            </div>
+
+            <!-- Conditional Multi-Page Previous / Next Buttons (Hidden when only 1 page) -->
+            <button type="button" id="btnPrevPage" onclick="changeMenuPage(-1)" class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full liquid-glass-pill text-white active:scale-90 transition-all" aria-label="Previous Page">
+                <i data-lucide="chevron-left" class="w-5 h-5 text-emerald-300"></i>
+            </button>
+            <button type="button" id="btnNextPage" onclick="changeMenuPage(1)" class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full liquid-glass-pill text-white active:scale-90 transition-all" aria-label="Next Page">
+                <i data-lucide="chevron-right" class="w-5 h-5 text-emerald-300"></i>
+            </button>
+
+            <!-- Subtle Gesture Hint Pill (Auto-hides while zoomed in) -->
+            <div id="gestureHint" class="absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none text-[10px] font-medium tracking-wide text-emerald-100/90 liquid-glass-pill px-3.5 py-1.5 rounded-full transition-opacity duration-200 whitespace-nowrap">
+                Cubit layar atau ketuk 2x untuk memperbesar menu
+            </div>
+        </div>
+
+        <!-- Sleek Minimal Bottom Bar -->
+        <div class="relative z-30 safe-bottom px-4 pt-2 pb-3 bg-gradient-to-t from-forest-950/95 to-transparent flex justify-center">
+            <button type="button" onclick="closeMenuViewer()" class="liquid-glass-pill px-6 py-2.5 rounded-full active:scale-95 text-emerald-100 hover:text-white font-semibold text-xs transition-all flex items-center gap-2">
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-emerald-300"></i>
+                <span id="bottomBackCategoriesLabel">Kategori Menu Lainnya</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- 5. FOOTER                                                           -->
+    <!-- =================================================================== -->
+    <footer class="safe-bottom pt-2 pb-5 px-4 text-center relative z-10 text-[11px] text-emerald-300/55">
+        <p class="font-semibold text-emerald-200/75">Boyong Resto</p>
+        <p id="footerTagline" class="mt-0.5">Resto Apung Legendaris</p>
+    </footer>
+
+    <!-- =================================================================== -->
+    <!-- JAVASCRIPT: DATA, BILINGUAL I18N, GALLERY, & TOUCH ZOOM ENGINE      -->
+    <!-- =================================================================== -->
+    <script>
+        /* =========================================================================
+           DATA KATALOG MENU:
+           Setiap kategori memiliki:
+           - id: kode unik kategori
+           - title: nama kategori (ditampilkan pada kartu kategori)
+           - thumb: foto thumbnail persegi di halaman utama
+           - pages: daftar gambar lembaran menu (ID & EN) beserta harganya
+           ========================================================================= */
+        const menuCatalogData = [
+            {
+                id: "ikan",
+                title: {
+                    id: "Aneka Ikan",
+                    en: "Fish Varieties (Aneka Ikan)"
+                },
+                desc: {
+                    id: "Olahan ikan bakar, goreng & asam manis segar",
+                    en: "Fresh grilled, fried & sweet sour fish dishes"
+                },
+                thumb: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "ayam_bebek",
+                title: {
+                    id: "Aneka Ayam & Bebek",
+                    en: "Chicken & Duck Varieties (Aneka Ayam & Bebek)"
+                },
+                desc: {
+                    id: "Ayam kampung & bebek goreng/bakar bumbu rempah",
+                    en: "Traditional spiced grilled & crispy chicken and duck"
+                },
+                thumb: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "seafood",
+                title: {
+                    id: "Aneka Seafood",
+                    en: "Seafood Varieties (Aneka Seafood)"
+                },
+                desc: {
+                    id: "Udang, cumi & olahan hasil laut pilihan",
+                    en: "Prawns, calamari & signature seafood delicacies"
+                },
+                thumb: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "jamur_tempe_tahu",
+                title: {
+                    id: "Jamur, Tempe & Tahu",
+                    en: "Mushroom, Tempeh & Tofu (Jamur, Tempe & Tahu)"
+                },
+                desc: {
+                    id: "Jamur crispy, mendoan hangat & tahu goreng",
+                    en: "Crispy mushrooms, traditional tempeh & fried tofu"
+                },
+                thumb: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "sayuran_soup",
+                title: {
+                    id: "Sayuran & Soup",
+                    en: "Vegetables & Soups (Sayuran & Soup)"
+                },
+                desc: {
+                    id: "Tumis sayuran segar & kuah sup hangat",
+                    en: "Fresh stir-fried greens & warm savory soups"
+                },
+                thumb: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "menu_tambahan",
+                title: {
+                    id: "Menu Tambahan (Nasi & Olahan Mie)",
+                    en: "Additional Menu - Rice & Noodles (Menu Tambahan - Nasi & Olahan Mie)"
+                },
+                desc: {
+                    id: "Nasi putih, nasi goreng & aneka mie spesial",
+                    en: "Steamed rice, fried rice & special noodle dishes"
+                },
+                thumb: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "sambal",
+                title: {
+                    id: "Aneka Sambal",
+                    en: "Sambal Varieties (Aneka Sambal)"
+                },
+                desc: {
+                    id: "Pilihan sambal ulek dadakan khas nusantara",
+                    en: "Freshly ground traditional Indonesian chili relishes"
+                },
+                thumb: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "lalapan_buah",
+                title: {
+                    id: "Lalapan & Buah",
+                    en: "Fresh Vegetables & Fruits (Lalapan & Buah)"
+                },
+                desc: {
+                    id: "Lalapan segar & buah potong pencuci mulut",
+                    en: "Fresh raw vegetable platter & sliced seasonal fruits"
+                },
+                thumb: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "lain_lain",
+                title: {
+                    id: "Lain-lain / Jasa",
+                    en: "Others & Services (Lain-lain / Jasa)"
+                },
+                desc: {
+                    id: "Layanan tambahan & fasilitas pelengkap",
+                    en: "Additional items, condiments & dining services"
+                },
+                thumb: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "minuman_panas",
+                title: {
+                    id: "Minuman Panas",
+                    en: "Hot Drinks (Minuman Panas)"
+                },
+                desc: {
+                    id: "Teh hangat, jeruk panas, kopi & wedang rempah",
+                    en: "Hot tea, warm citrus, coffee & traditional herbal drinks"
+                },
+                thumb: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "minuman_dingin",
+                title: {
+                    id: "Minuman Dingin",
+                    en: "Cold Drinks (Minuman Dingin)"
+                },
+                desc: {
+                    id: "Es teh, es jeruk, kelapa muda & minuman segar",
+                    en: "Iced tea, iced citrus, young coconut & refreshers"
+                },
+                thumb: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "juice",
+                title: {
+                    id: "Juice",
+                    en: "Fresh Juices (Juice)"
+                },
+                desc: {
+                    id: "Jus buah asli segar pilihan setiap hari",
+                    en: "Freshly blended natural fruit juices"
+                },
+                thumb: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "milkshake",
+                title: {
+                    id: "Milkshake",
+                    en: "Milkshakes (Milkshake)"
+                },
+                desc: {
+                    id: "Susu kocok lembut rasa cokelat, stroberi & vanila",
+                    en: "Creamy blended chocolate, strawberry & vanilla shakes"
+                },
+                thumb: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            },
+            {
+                id: "menu_paket",
+                title: {
+                    id: "Menu Paket (untuk 5 orang)",
+                    en: "Set Menu (for 5 People) / Menu Paket (untuk 5 Orang)"
+                },
+                desc: {
+                    id: "Paket makan bersama lengkap untuk 5 orang",
+                    en: "Complete family & group dining package for 5 people"
+                },
+                thumb: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+                pages: {
+                    id: [
+                        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=85"
+                    ],
+                    en: [
+                        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=85"
+                    ]
+                }
+            }
+        ];
+
+        const i18nText = {
+            id: {
+                pageTitle: "Boyong Resto — Resto Apung Legendaris",
+                tagline: "Resto Apung Legendaris",
+                heroBadge: "Buku Menu Digital",
+                zoomBadge: "Perbesar tampilan menu",
+                heroTitle: "Pilih Kategori Hidangan",
+                heroDesc: "Silakan pilih kategori di bawah ini untuk melihat daftar hidangan beserta informasi harga selengkapnya.",
+                openMenuLabel: "Buka Menu",
+                multiPageBadge: (count) => `${count} Halaman`,
+                viewerBack: "Kembali",
+                pageOf: (curr, total) => `Halaman ${curr} dari ${total}`,
+                bottomBackCategories: "Kategori Menu Lainnya",
+                gestureHint: "Cubit layar atau ketuk 2x untuk memperbesar menu"
+            },
+            en: {
+                pageTitle: "Boyong Resto — Legendary Floating Restaurant",
+                tagline: "Legendary Floating Restaurant",
+                heroBadge: "Digital Menu Book",
+                zoomBadge: "Pinch to zoom menu",
+                heroTitle: "Select Menu Category",
+                heroDesc: "Please select a category below to explore our dishes and complete price list.",
+                openMenuLabel: "View Menu",
+                multiPageBadge: (count) => `${count} Pages`,
+                viewerBack: "Back",
+                pageOf: (curr, total) => `Page ${curr} of ${total}`,
+                bottomBackCategories: "Other Menu Categories",
+                gestureHint: "Pinch or double-tap to zoom in on the menu"
+            }
+        };
+
+        // App State
+        let currentLang = 'id';
+        let activeCategory = null;
+        let currentMenuPageIndex = 0;
+
+        function refreshIcons() {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        // Splash Screen Selection
+        function handleInitialLanguage(lang) {
+            setLanguage(lang);
+            const splash = document.getElementById('welcomeSplash');
+            splash.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 300);
+        }
+
+        // Language Switcher Logic
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.title = i18nText[lang].pageTitle;
+
+            const btnId = document.getElementById('langToggleId');
+            const btnEn = document.getElementById('langToggleEn');
+
+            if (lang === 'id') {
+                btnId.className = "px-3 py-1.5 text-xs font-bold rounded-full transition-all duration-200 bg-emerald-400 text-forest-950 shadow-sm";
+                btnEn.className = "px-3 py-1.5 text-xs font-bold rounded-full transition-all duration-200 text-emerald-100/80 hover:text-white";
+            } else {
+                btnEn.className = "px-3 py-1.5 text-xs font-bold rounded-full transition-all duration-200 bg-emerald-400 text-forest-950 shadow-sm";
+                btnId.className = "px-3 py-1.5 text-xs font-bold rounded-full transition-all duration-200 text-emerald-100/80 hover:text-white";
+            }
+
+            // Update Localized Text Elements
+            document.getElementById('headerTagline').textContent = i18nText[lang].tagline;
+            document.getElementById('footerTagline').textContent = i18nText[lang].tagline;
+            document.getElementById('heroBadge').textContent = i18nText[lang].heroBadge;
+            document.querySelector('#zoomBadge span').textContent = i18nText[lang].zoomBadge;
+            document.getElementById('heroTitle').textContent = i18nText[lang].heroTitle;
+            document.getElementById('heroDesc').textContent = i18nText[lang].heroDesc;
+            document.getElementById('viewerBackLabel').textContent = i18nText[lang].viewerBack;
+            document.getElementById('bottomBackCategoriesLabel').textContent = i18nText[lang].bottomBackCategories;
+            document.getElementById('gestureHint').textContent = i18nText[lang].gestureHint;
+
+            renderCategoryGrid();
+
+            if (activeCategory) {
+                updateMenuViewerDisplay();
+            }
+        }
+
+        // Render Category Cards Grid
+        function renderCategoryGrid() {
+            const grid = document.getElementById('categoryGrid');
+            grid.innerHTML = '';
+
+            menuCatalogData.forEach((cat) => {
+                const pagesForLang = cat.pages[currentLang] || cat.pages.id;
+                const totalPages = pagesForLang.length;
+
+                const card = document.createElement('button');
+                card.type = 'button';
+                card.className = "liquid-glass-card rounded-[24px] overflow-hidden flex flex-col text-left group cursor-pointer active:scale-[0.97] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400/50";
+                card.onclick = () => openMenuViewer(cat);
+
+                card.innerHTML = `
+                    <!-- Square Thumbnail Top -->
+                    <div class="relative w-full aspect-square overflow-hidden bg-forest-900">
+                        <img src="${cat.thumb}"
+                             alt="${cat.title[currentLang]}"
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/500x500/0c221b/34d399?text=Boyong+Resto'">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/15 to-transparent"></div>
+
+                        ${totalPages > 1 ? `
+                        <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full liquid-glass-pill text-[10px] font-bold text-emerald-200">
+                            ${i18nText[currentLang].multiPageBadge(totalPages)}
+                        </span>
+                        ` : ''}
+
+                        <div class="absolute bottom-2.5 right-2.5 p-2 rounded-xl liquid-glass-pill text-emerald-300 group-hover:scale-105 transition-transform">
+                            <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </div>
+
+                    <!-- Bold Category Title & Subtitle Bottom -->
+                    <div class="p-3.5 flex flex-col justify-between flex-grow w-full bg-forest-900/45 border-t border-white/10">
+                        <div>
+                            <h4 class="font-serif text-[14px] sm:text-base font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug mb-1 line-clamp-3">
+                                ${cat.title[currentLang]}
+                            </h4>
+                            <p class="text-[11px] text-emerald-100/70 line-clamp-2 leading-relaxed">
+                                ${cat.desc[currentLang]}
+                            </p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-emerald-300 font-bold">
+                            <span>${i18nText[currentLang].openMenuLabel}</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            refreshIcons();
+        }
+
+        /* =====================================================================
+           INTERACTIVE FULLSCREEN ZOOM & PAN ENGINE (TOUCH + DESKTOP)
+           ===================================================================== */
+        const zoomState = {
+            scale: 1,
+            posX: 0,
+            posY: 0,
+            isDragging: false,
+            startX: 0,
+            startY: 0,
+            initialPinchDist: 0,
+            initialScale: 1,
+            pinchCenterX: 0,
+            pinchCenterY: 0,
+            lastTapTime: 0,
+            lastTapX: 0,
+            lastTapY: 0
+        };
+
+        const zoomTarget = document.getElementById('zoomTarget');
+        const viewViewport = document.getElementById('viewerViewport');
+        const menuImgEl = document.getElementById('menuPageImage');
+        const zoomPercentEl = document.getElementById('zoomPercent');
+        const gestureHintEl = document.getElementById('gestureHint');
+
+        function clampPanPosition() {
+            if (zoomState.scale <= 1.01) {
+                zoomState.scale = 1;
+                zoomState.posX = 0;
+                zoomState.posY = 0;
+                return;
+            }
+
+            const vpRect = viewViewport.getBoundingClientRect();
+            const baseW = menuImgEl.offsetWidth || vpRect.width * 0.9;
+            const baseH = menuImgEl.offsetHeight || vpRect.height * 0.75;
+
+            const scaledW = baseW * zoomState.scale;
+            const scaledH = baseH * zoomState.scale;
+
+            // Keep menu image comfortably draggable to all edges without losing it off-screen
+            const maxOffsetX = Math.max(0, (scaledW - Math.min(baseW, vpRect.width) * 0.55) / 2);
+            const maxOffsetY = Math.max(0, (scaledH - Math.min(baseH, vpRect.height) * 0.55) / 2);
+
+            zoomState.posX = Math.min(Math.max(zoomState.posX, -maxOffsetX), maxOffsetX);
+            zoomState.posY = Math.min(Math.max(zoomState.posY, -maxOffsetY), maxOffsetY);
+        }
+
+        function applyTransform(smooth = false) {
+            zoomState.scale = Math.min(Math.max(1, zoomState.scale), 4);
+            clampPanPosition();
+
+            zoomTarget.style.transitionDuration = smooth ? '220ms' : '0ms';
+            zoomTarget.style.transform = `translate3d(${zoomState.posX}px, ${zoomState.posY}px, 0) scale(${zoomState.scale})`;
+            zoomPercentEl.textContent = `${Math.round(zoomState.scale * 100)}%`;
+
+            if (zoomState.scale > 1.05) {
+                gestureHintEl.style.opacity = '0';
+            } else {
+                gestureHintEl.style.opacity = '1';
+            }
+        }
+
+        function zoomStep(delta) {
+            const prevScale = zoomState.scale;
+            const nextScale = Math.min(Math.max(1, prevScale + delta), 4);
+            const ratio = nextScale / prevScale;
+            zoomState.posX *= ratio;
+            zoomState.posY *= ratio;
+            zoomState.scale = nextScale;
+            applyTransform(true);
+        }
+
+        function resetZoom(smooth = true) {
+            zoomState.scale = 1;
+            zoomState.posX = 0;
+            zoomState.posY = 0;
+            applyTransform(smooth);
+        }
+
+        // Toggle Zoom centered on tap/click coordinates
+        function togglePointZoom(clientX, clientY) {
+            if (zoomState.scale > 1.15) {
+                resetZoom(true);
+                return;
+            }
+
+            const vpRect = viewViewport.getBoundingClientRect();
+            const targetScale = 2.4;
+            const offsetX = clientX - (vpRect.left + vpRect.width / 2);
+            const offsetY = clientY - (vpRect.top + vpRect.height / 2);
+
+            zoomState.scale = targetScale;
+            zoomState.posX = -offsetX * (targetScale - 1);
+            zoomState.posY = -offsetY * (targetScale - 1);
+            applyTransform(true);
+        }
+
+        function openMenuViewer(category) {
+            activeCategory = category;
+            currentMenuPageIndex = 0;
+            resetZoom(false);
+
+            updateMenuViewerDisplay();
+
+            const modal = document.getElementById('menuViewerModal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+
+            // Push history state so mobile hardware back button closes the viewer cleanly
+            try {
+                window.history.pushState({ viewerOpen: true }, '');
+            } catch (err) {
+                // Ignore if restricted by iframe sandbox
+            }
+
+            refreshIcons();
+        }
+
+        function updateMenuViewerDisplay() {
+            if (!activeCategory) return;
+
+            const pageList = activeCategory.pages[currentLang] || activeCategory.pages.id;
+            const pageBadge = document.getElementById('pageIndicatorBadge');
+            const btnPrev = document.getElementById('btnPrevPage');
+            const btnNext = document.getElementById('btnNextPage');
+
+            menuImgEl.src = pageList[currentMenuPageIndex];
+            document.getElementById('viewerCategoryTitle').textContent = activeCategory.title[currentLang];
+
+            // Conditional Pagination: ONLY show arrows & counter when > 1 page
+            if (pageList.length > 1) {
+                pageBadge.textContent = i18nText[currentLang].pageOf(currentMenuPageIndex + 1, pageList.length);
+                pageBadge.classList.remove('hidden');
+                btnPrev.classList.remove('hidden');
+                btnNext.classList.remove('hidden');
+
+                const isFirst = currentMenuPageIndex === 0;
+                const isLast = currentMenuPageIndex === pageList.length - 1;
+
+                btnPrev.style.opacity = isFirst ? '0.3' : '1';
+                btnPrev.style.pointerEvents = isFirst ? 'none' : 'auto';
+                btnNext.style.opacity = isLast ? '0.3' : '1';
+                btnNext.style.pointerEvents = isLast ? 'none' : 'auto';
+            } else {
+                pageBadge.classList.add('hidden');
+                btnPrev.classList.add('hidden');
+                btnNext.classList.add('hidden');
+            }
+        }
+
+        function changeMenuPage(direction) {
+            if (!activeCategory) return;
+            const pageList = activeCategory.pages[currentLang] || activeCategory.pages.id;
+            const nextIdx = currentMenuPageIndex + direction;
+
+            if (nextIdx >= 0 && nextIdx < pageList.length) {
+                currentMenuPageIndex = nextIdx;
+                resetZoom(false);
+                updateMenuViewerDisplay();
+            }
+        }
+
+        function closeMenuViewer(fromPopState = false) {
+            const modal = document.getElementById('menuViewerModal');
+            if (modal.classList.contains('hidden')) return;
+
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            activeCategory = null;
+            resetZoom(false);
+
+            if (!fromPopState && window.history.state && window.history.state.viewerOpen) {
+                try {
+                    window.history.back();
+                } catch (err) {
+                    // Ignore history navigation errors
+                }
+            }
+        }
+
+        window.addEventListener('popstate', () => {
+            if (activeCategory) {
+                closeMenuViewer(true);
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (!activeCategory) return;
+            if (e.key === 'Escape') closeMenuViewer();
+            if (e.key === 'ArrowRight') changeMenuPage(1);
+            if (e.key === 'ArrowLeft') changeMenuPage(-1);
+            if (e.key === '+' || e.key === '=') zoomStep(0.4);
+            if (e.key === '-') zoomStep(-0.4);
+        });
+
+        // Touch Gestures: Pinch-to-Zoom, Double-Tap Zoom, Single-Finger Pan
+        viewViewport.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                zoomState.isDragging = false;
+                zoomState.initialPinchDist = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                zoomState.initialScale = zoomState.scale;
+            } else if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                const now = Date.now();
+                const distFromLastTap = Math.hypot(
+                    touch.clientX - zoomState.lastTapX,
+                    touch.clientY - zoomState.lastTapY
+                );
+
+                // Double-tap centered zoom
+                if (now - zoomState.lastTapTime < 280 && distFromLastTap < 36) {
+                    e.preventDefault();
+                    togglePointZoom(touch.clientX, touch.clientY);
+                    zoomState.lastTapTime = 0;
+                    return;
+                }
+
+                zoomState.lastTapTime = now;
+                zoomState.lastTapX = touch.clientX;
+                zoomState.lastTapY = touch.clientY;
+
+                if (zoomState.scale > 1) {
+                    zoomState.isDragging = true;
+                    zoomState.startX = touch.clientX - zoomState.posX;
+                    zoomState.startY = touch.clientY - zoomState.posY;
+                }
+            }
+        }, { passive: false });
+
+        viewViewport.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2 && zoomState.initialPinchDist > 0) {
+                e.preventDefault();
+                const currentDist = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                const pinchRatio = currentDist / zoomState.initialPinchDist;
+                zoomState.scale = zoomState.initialScale * pinchRatio;
+                applyTransform(false);
+            } else if (e.touches.length === 1 && zoomState.isDragging && zoomState.scale > 1) {
+                e.preventDefault();
+                zoomState.posX = e.touches[0].clientX - zoomState.startX;
+                zoomState.posY = e.touches[0].clientY - zoomState.startY;
+                applyTransform(false);
+            }
+        }, { passive: false });
+
+        viewViewport.addEventListener('touchend', (e) => {
+            if (e.touches.length < 2) {
+                zoomState.initialPinchDist = 0;
+            }
+            if (e.touches.length === 0) {
+                zoomState.isDragging = false;
+                if (zoomState.scale <= 1.02) {
+                    resetZoom(true);
+                } else {
+                    applyTransform(true);
+                }
+            }
+        });
+
+        // Desktop Mouse Support: Double-Click, Drag Pan, & Scroll Wheel Zoom
+        viewViewport.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            togglePointZoom(e.clientX, e.clientY);
+        });
+
+        viewViewport.addEventListener('mousedown', (e) => {
+            if (zoomState.scale > 1) {
+                e.preventDefault();
+                zoomState.isDragging = true;
+                zoomState.startX = e.clientX - zoomState.posX;
+                zoomState.startY = e.clientY - zoomState.posY;
+            }
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (zoomState.isDragging && zoomState.scale > 1) {
+                zoomState.posX = e.clientX - zoomState.startX;
+                zoomState.posY = e.clientY - zoomState.startY;
+                applyTransform(false);
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (zoomState.isDragging) {
+                zoomState.isDragging = false;
+                applyTransform(true);
+            }
+        });
+
+        viewViewport.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY * -0.0025;
+            const prevScale = zoomState.scale;
+            const nextScale = Math.min(Math.max(1, prevScale + delta), 4);
+            const ratio = nextScale / prevScale;
+            zoomState.posX *= ratio;
+            zoomState.posY *= ratio;
+            zoomState.scale = nextScale;
+            applyTransform(false);
+        }, { passive: false });
+
+        // Initialize App on Load
+        window.onload = function () {
+            renderCategoryGrid();
+            refreshIcons();
+        };
+    </script>
+</body>
+</html>
